@@ -1,12 +1,30 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-
+import { AuthContext } from "../Provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const Navbar = () => {
+ const {user,userLogOut} = useContext(AuthContext);
 
+//  console.log(user)
+
+
+ const handleLogout = () => {
+    userLogOut()
+    .then(()=>{
+        toast.success('Successfully logout')
+    })
+    .catch(error=>{
+        toast.error(error.message)
+    })
+ }
     
     return (
       <div>
+        <div>
+          <Toaster />
+        </div>
         <div className="navbar bg-base-100">
           <div className="navbar-start">
             <div className="dropdown">
@@ -36,20 +54,23 @@ const Navbar = () => {
                 <li>
                   <NavLink to="/services">Services</NavLink>
                 </li>
-                <li>
-                  <li>Dashboard</li>
-                  <ul className="p-2">
-                    <li>
-                      <NavLink to="/my-services">My-Services</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/add-services">Add-Services</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/my-schedules">My-schedules</NavLink>
-                    </li>
-                  </ul>
-                </li>
+
+                {user?.email && (
+                  <>
+                    <li>Dashboard</li>
+                    <ul className="p-2">
+                      <li>
+                        <NavLink to="/my-services">My-Services</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/add-services">Add-Services</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/my-schedules">My-schedules</NavLink>
+                      </li>
+                    </ul>
+                  </>
+                )}
               </ul>
             </div>
             <a className="btn btn-ghost normal-case text-xl">Child Co</a>
@@ -63,25 +84,35 @@ const Navbar = () => {
                 <NavLink to="/services">Services</NavLink>
               </li>
               <li tabIndex={0}>
-                <details>
-                  <summary>Dashboard</summary>
-                  <ul className="p-2">
-                    <li>
-                      <NavLink to="/my-services">My-Services</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/add-services">Add-Services</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/my-schedules">My-schedules</NavLink>
-                    </li>
-                  </ul>
-                </details>
+                {user?.email && (
+                  <details>
+                    <summary>Dashboard</summary>
+                    <ul className="p-2">
+                      <li>
+                        <NavLink to="/my-services">My-Services</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/add-services">Add-Services</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/my-schedules">My-schedules</NavLink>
+                      </li>
+                    </ul>
+                  </details>
+                )}
               </li>
             </ul>
           </div>
           <div className="navbar-end">
-            <NavLink to="/login" className="btn">Login</NavLink>
+            {user?.email ? (
+              <button onClick={handleLogout} className="btn">
+                Logout
+              </button>
+            ) : (
+              <NavLink to="/login" className="btn">
+                Login
+              </NavLink>
+            )}
           </div>
         </div>
       </div>
