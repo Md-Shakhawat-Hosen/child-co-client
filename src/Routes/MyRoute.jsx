@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Services from "../pages/Services";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Root from "../Root/Root";
 
 
@@ -35,8 +36,12 @@ const myRoute = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: <ServiceDetails></ServiceDetails>,
-        loader: ({params}) =>
+        element: (
+          <PrivateRoute>
+            <ServiceDetails></ServiceDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },
     ],
