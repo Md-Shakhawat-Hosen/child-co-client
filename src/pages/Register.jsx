@@ -1,11 +1,14 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const { createUser, userUpdateProfile } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -15,13 +18,16 @@ const Register = () => {
         const password = form.password.value;
 
 
-        const userInfo = {name,photo,email,password};
+        // const userInfo = {name,photo,email,password};
 
-        console.log(userInfo)
+        // console.log(userInfo)
 
         createUser(email, password).then(() =>{
-            toast.success("Successfully toasted!");
+            toast.success("Successfully Register!");
             form.reset();
+            userUpdateProfile(name,photo);
+            navigate('/')
+
         })
         .catch(error =>{
             toast.error(`something wrong ${error.message}`);

@@ -5,11 +5,13 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile,
   signOut,
 } from "firebase/auth";
 import auth from '../Firebase/firebase.config'
 import { useState } from "react";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
@@ -34,6 +36,20 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth,googleProvider);
     }
 
+    const userUpdateProfile = async(name,photo) => {
+        return await updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            toast.error(error.message)
+          });
+    }
+
     const userLogOut = () => {
         return signOut(auth)
     }
@@ -49,7 +65,7 @@ const AuthProvider = ({children}) => {
         }
     },[])
 
-    const authInfo ={user, loading, createUser,userSignInEmail,userSignGoogle, userLogOut}
+    const authInfo ={user, loading, createUser,userSignInEmail,userSignGoogle, userLogOut,userUpdateProfile}
     return (
         <AuthContext.Provider value={authInfo} >
             {children}

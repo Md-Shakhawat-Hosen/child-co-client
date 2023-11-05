@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import toast, { Toaster } from "react-hot-toast";
 
 const ServiceDetails = () => {
     const {user} = useContext(AuthContext)
+
+    console.log(user);
 
     const serviceDetails = useLoaderData();
 
@@ -40,11 +42,17 @@ const ServiceDetails = () => {
         )
         .then(res => res.json())
         .then(data =>{
-            console.log(data);
+            // console.log(data);
+            if(data.insertedId) {
+                toast.success('Booking successfully')
+            }
         })
      }
     return (
       <div className="px-4">
+        <div>
+          <Toaster />
+        </div>
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-9">
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -129,7 +137,8 @@ const ServiceDetails = () => {
                               name="name"
                               defaultValue={serviceName}
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               disabled />
+                              disabled
+                            />
                           </div>
                           <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -140,7 +149,8 @@ const ServiceDetails = () => {
                               name="providerEmail"
                               defaultValue={serviceProvider.email}
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               disabled />
+                              disabled
+                            />
                           </div>
                           <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -149,9 +159,10 @@ const ServiceDetails = () => {
                             <input
                               type="text"
                               name="userEmail"
-                              defaultValue={user?.email || 'Not Found'}
+                              defaultValue={user?.email || "Not Found"}
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               disabled />
+                              disabled
+                            />
                           </div>
                           <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -160,9 +171,8 @@ const ServiceDetails = () => {
                             <input
                               type="date"
                               name="date"
-                             
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
+                            />
                           </div>
                           <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -171,9 +181,9 @@ const ServiceDetails = () => {
                             <input
                               type="text"
                               name="address"
-                             placeholder="your address"
+                              placeholder="your address"
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
+                            />
                           </div>
                           <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -182,9 +192,10 @@ const ServiceDetails = () => {
                             <input
                               type="text"
                               name="price"
-                             defaultValue={servicePrice}
+                              defaultValue={servicePrice}
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                disabled/>
+                              disabled
+                            />
                           </div>
 
                           <button className="btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
