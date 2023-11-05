@@ -1,9 +1,12 @@
+import Banner from "../Components/Banner/Banner";
+import PopularServices from "../Components/PopularServices/PopularServices";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
+            <Banner></Banner>
+            <PopularServices></PopularServices>
         </div>
     );
 };
