@@ -27,7 +27,7 @@ const MyServices = () => {
         
         <div className="grid grid-cols-1 gap-6">
             {
-               myAddedServices?.map(addService => <MyServicesCard key={addService._id} addService={addService} ></MyServicesCard>)
+               myAddedServices?.map(addService => <MyServicesCard key={addService._id} addService={addService} myAddedServices={myAddedServices} setMyAddedServices={setMyAddedServices} ></MyServicesCard>)
             }
         </div>
       </div>

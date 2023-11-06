@@ -15,7 +15,7 @@ const FilterServices = ({filterservice}) => {
     } = filterservice;
     return (
       <div className="px-4">
-        <a className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
           <div className="flex-1">
             <img
               className="w-full h-[400px] rounded-l-lg"
@@ -73,7 +73,7 @@ const FilterServices = ({filterservice}) => {
               </NavLink>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     );
 };
