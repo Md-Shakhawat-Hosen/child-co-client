@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllServices from "../Components/AllServices/AllServices";
+import NotFound from "../Components/NotFound/NotFound";
 import ServiceDetails from "../Components/ServiceDetails/ServiceDetails";
 import MyAddServices from "../Dashboard/MyAddServices";
 import MySchedules from "../Dashboard/MySchedules";
@@ -16,6 +17,7 @@ const myRoute = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",

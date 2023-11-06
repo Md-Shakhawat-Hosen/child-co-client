@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { useRef } from "react";
 
 const ServiceDetails = () => {
     const {user} = useContext(AuthContext)
+    const btn = useRef();
 
     console.log(user);
 
@@ -12,19 +14,30 @@ const ServiceDetails = () => {
 
      const { serviceName, serviceImage, serviceDescription, serviceArea, servicePrice,serviceProvider } = serviceDetails;
 
+
+
      const handlePurchase = event =>{
         event.preventDefault();
         const form = event.target;
 
-        const name = serviceName
-        const providerEmail = serviceProvider.email
-        const userEmail = user?.email || 'not found';
+        // const serviceName = serviceName
+        // const serviceImage = serviceImage;
+        const serviceProviderEmail = serviceProvider.email
+        const email = user?.email
         const date = form.date.value;
         const address = form.address.value;
         const price = servicePrice;
 
 
-        const userBooking = {name, providerEmail, userEmail, date, address, price}
+        const userBooking = {
+          serviceName: serviceName,
+          serviceImage: serviceImage,
+          serviceProviderEmail,
+          email,
+          date,
+          address,
+          price,
+        };
 
         console.log(userBooking)
 
@@ -44,6 +57,7 @@ const ServiceDetails = () => {
         .then(data =>{
             // console.log(data);
             if(data.insertedId) {
+              btn.current.click()
                 toast.success('Booking successfully')
             }
         })
@@ -115,7 +129,10 @@ const ServiceDetails = () => {
                       <div className="modal-box">
                         <form method="dialog">
                           {/* if there is a button in form, it will close the modal */}
-                          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                          <button
+                            ref={btn}
+                            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                          >
                             ✕
                           </button>
                         </form>
@@ -136,6 +153,18 @@ const ServiceDetails = () => {
                               type="text"
                               name="name"
                               defaultValue={serviceName}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              disabled
+                            />
+                          </div>
+                          <div className="mb-6">
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                              Service Image
+                            </label>
+                            <input
+                              type="text"
+                              name="serviceImage"
+                              defaultValue={serviceImage}
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               disabled
                             />

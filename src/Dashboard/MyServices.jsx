@@ -23,7 +23,6 @@ const MyServices = () => {
     
     return (
       <div>
-        <p>{myAddedServices.length}</p>
         
         <div className="grid grid-cols-1 gap-6">
             {
