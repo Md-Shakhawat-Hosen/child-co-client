@@ -22,13 +22,13 @@ const PopularServices = () => {
           Popular Services
         </h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {services.map((service) => (
+          {services.slice(0,4).map((service) => (
             <ServicesCard key={service._id} service={service}></ServicesCard>
           ))}
         </div>
         <div className="text-center mt-9">
           <NavLink
-            to="/all-services"
+            to="/services"
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Show All

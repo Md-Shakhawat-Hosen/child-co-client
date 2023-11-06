@@ -240,7 +240,7 @@ const ServiceDetails = () => {
                 <span className="text-sm text-gray-500 dark:text-gray-400">
                   {serviceArea}
                 </span>
-                <p className="px-2">{serviceProvider.description}</p>
+                {/* <p className="px-2">{serviceProvider?.description || ''}</p> */}
               </div>
             </div>
           </div>

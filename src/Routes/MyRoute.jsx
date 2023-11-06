@@ -1,10 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllServices from "../Components/AllServices/AllServices";
 import ServiceDetails from "../Components/ServiceDetails/ServiceDetails";
+import MyAddServices from "../Dashboard/MyAddServices";
+import MySchedules from "../Dashboard/MySchedules";
+import MyServices from "../Dashboard/MyServices";
+import UpdateService from "../Dashboard/MyServicesCard/UpdateService/UpdateService";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Services from "../pages/Services";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Root from "../Root/Root";
 
@@ -18,10 +21,7 @@ const myRoute = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      {
-        path: "/services",
-        element: <Services></Services>,
-      },
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -31,7 +31,7 @@ const myRoute = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/all-services",
+        path: "/services",
         element: <AllServices></AllServices>,
       },
       {
@@ -43,6 +43,27 @@ const myRoute = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/my-services",
+        element: <MyServices></MyServices>,
+      },
+      {
+        path: "/updateService/:id",
+        element: <UpdateService></UpdateService>,
+        loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/add-services",
+        element: (
+          <PrivateRoute>
+            <MyAddServices></MyAddServices>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-schedules",
+        element: <MySchedules></MySchedules>,
       },
     ],
   },

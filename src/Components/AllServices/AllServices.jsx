@@ -1,15 +1,26 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import useServices from "../../Hooks/useServices";
 import FilterServices from "./FilterServices";
 
 
 const AllServices = () => {
-
+     const { services } = useServices();
     const [showServices, setShowAllServices] = useState([])
+      const [show, setShow] = useState(false);
 
-    const [show, setShow] = useState(false);
+    useEffect(()=>{
+     
+      setShowAllServices(services)
+      setShow(true)
 
-    const {services} = useServices();
+    },[services])
+
+    // console.log(showServices)
+
+  
+
+   
 
     // console.log(services)
 
@@ -24,7 +35,7 @@ const AllServices = () => {
             setShow(true)
         }
 
-        console.log(nameText.toLowerCase());
+        // console.log(nameText.toLowerCase());
 
         const filterServices = services.filter(service => service.serviceName.toLowerCase().includes(nameText.toLowerCase()));
 

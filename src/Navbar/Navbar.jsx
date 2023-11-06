@@ -46,7 +46,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-20  p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <NavLink to="/">Home</NavLink>
@@ -76,7 +76,7 @@ const Navbar = () => {
             <a className="btn btn-ghost normal-case text-xl">Child Co</a>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu z-10 menu-horizontal px-1">
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
@@ -105,9 +105,30 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">
             {user?.email ? (
-              <button onClick={handleLogout} className="btn">
-                Logout
-              </button>
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a className="justify-between">
+                      {user?.displayName}
+                      {/* <span className="badge">New</span> */}
+                    </a>
+                  </li>
+
+                  <li className="">
+                    <button onClick={handleLogout} className="bg-gray-300 ">
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
             ) : (
               <NavLink to="/login" className="btn">
                 Login
