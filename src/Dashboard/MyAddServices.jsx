@@ -3,57 +3,52 @@ import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 const MyAddServices = () => {
+  const { user } = useContext(AuthContext);
 
+  const handleAddService = (event) => {
+    event.preventDefault();
+    const form = event.target;
 
-    const {user} = useContext(AuthContext);
+    const name = user?.displayName;
+    const email = user?.email;
+    const image = user?.photoURL;
+    const serviceName = form.serviceName.value;
+    const serviceImage = form.serviceImage.value;
+    const servicePrice = form.servicePrice.value;
+    const serviceArea = form.serviceArea.value;
+    const serviceDescription = form.serviceDescription.value;
 
-    const handleAddService = event =>{
-        event.preventDefault();
-        const form = event.target;
+    const addService = {
+      serviceImage,
+      serviceName,
+      serviceDescription,
 
-        const name = user?.displayName;
-        const email = user?.email;
-        const image = user?.photoURL;
-        const serviceName = form.serviceName.value;
-        const serviceImage = form.serviceImage.value;
-        const servicePrice = form.servicePrice.value;
-        const serviceArea = form.serviceArea.value;
-        const serviceDescription = form.serviceDescription.value;
+      serviceProvider: {
+        image,
+        name,
+        email,
+      },
+      servicePrice,
+      serviceArea,
+    };
 
-        const addService = {
-          serviceImage,
-          serviceName,
-          serviceDescription,
+    console.log(addService);
 
-          serviceProvider: {
-            image,
-            name,
-            email,
-          },
-          servicePrice,
-          serviceArea,
-        };
-
-        console.log(addService);
-
-
-        fetch("http://localhost:5000/services",{
-            method: 'POST',
-            headers:{
-                'content-type': 'application/json',
-            },
-            body:JSON.stringify(addService)
-        })
-        .then(res =>res.json())
-        .then(data => {
-            // console.log(data);
-            if (data.insertedId) {
-                toast.success('successfully added services')
-            }
-        })
-
-    
-    }
+    fetch("http://localhost:5000/services", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addService),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.insertedId) {
+          toast.success("successfully added services");
+        }
+      });
+  };
 
   return (
     <div className="">

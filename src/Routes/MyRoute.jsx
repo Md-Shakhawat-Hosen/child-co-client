@@ -12,7 +12,6 @@ import Register from "../pages/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Root from "../Root/Root";
 
-
 const myRoute = createBrowserRouter([
   {
     path: "/",

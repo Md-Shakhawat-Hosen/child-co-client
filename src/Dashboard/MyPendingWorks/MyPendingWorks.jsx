@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -6,9 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const MyPendingWorks = () => {
   const { user } = useContext(AuthContext);
-//    const [selectedValue, setSelectedValue] = useState("pending");
-
-
+  //    const [selectedValue, setSelectedValue] = useState("pending");
 
   const [myPendingWorks, setMyPendingWorks] = useState([]);
 
@@ -23,8 +20,7 @@ const MyPendingWorks = () => {
     (book) => book.serviceProviderEmail === user?.email
   );
 
-//   console.log(otherBookedService);
-
+  //   console.log(otherBookedService);
 
   const handlePendingWork = async (event, bookingId) => {
     const newValue = event.target.value;
@@ -53,7 +49,7 @@ const MyPendingWorks = () => {
         );
 
         setTimeout(() => {
-            window.location.reload();
+          window.location.reload();
         }, 100);
       } else {
         console.error(
@@ -67,8 +63,7 @@ const MyPendingWorks = () => {
     }
   };
 
-  
-//    console.log(selectedValue);
+  //    console.log(selectedValue);
 
   return (
     <div className="my-6">
@@ -137,7 +132,7 @@ const MyPendingWorks = () => {
                           <form>
                             <select
                               value={book.status}
-                              onChange={(e)=>handlePendingWork(e,book._id)}
+                              onChange={(e) => handlePendingWork(e, book._id)}
                             >
                               <option value="pending">pending</option>
                               <option value="in progress">in progress</option>

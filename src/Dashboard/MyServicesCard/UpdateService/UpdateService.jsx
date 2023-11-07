@@ -3,7 +3,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
-
 const UpdateService = () => {
   const { user } = useContext(AuthContext);
   const {
@@ -16,56 +15,55 @@ const UpdateService = () => {
   } = useLoaderData();
   // console.log(ser)
 
-    const handleUpdate = event => {
-       event.preventDefault();
-       const form = event.target;
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    const form = event.target;
 
-       const name = user?.displayName;
-       const email = user?.email;
-       const image = user?.photoURL;
-       const serviceName = form.serviceName.value;
-       const serviceImage = form.serviceImage.value;
-       const servicePrice = form.servicePrice.value;
-       const serviceArea = form.serviceArea.value;
-       const serviceDescription = form.serviceDescription.value;
+    const name = user?.displayName;
+    const email = user?.email;
+    const image = user?.photoURL;
+    const serviceName = form.serviceName.value;
+    const serviceImage = form.serviceImage.value;
+    const servicePrice = form.servicePrice.value;
+    const serviceArea = form.serviceArea.value;
+    const serviceDescription = form.serviceDescription.value;
 
-       const addService = {
-         serviceImage,
-         serviceName,
-         serviceDescription,
+    const addService = {
+      serviceImage,
+      serviceName,
+      serviceDescription,
 
-         serviceProvider: {
-           image,
-           name,
-           email,
-         },
-         servicePrice,
-         serviceArea,
-       };
+      serviceProvider: {
+        image,
+        name,
+        email,
+      },
+      servicePrice,
+      serviceArea,
+    };
 
-       console.log(addService);
+    console.log(addService);
 
-   fetch(`http://localhost:5000/services/${_id}`, {
-     method: "PUT",
-     headers: {
-       "content-type": "application/json",
-     },
-     body: JSON.stringify(addService),
-   })
-     .then((res) => res.json())
-     .then((data) => {
-       console.log(data);
-       if (data.modifiedCount > 0) {
-         toast.success("successfully Updated");
-       }
-     });
-
-    }
+    fetch(`http://localhost:5000/services/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addService),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("successfully Updated");
+        }
+      });
+  };
   return (
     <div className="px-4">
-        <div>
-            <Toaster/>
-        </div>
+      <div>
+        <Toaster />
+      </div>
       <form onSubmit={handleUpdate}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>

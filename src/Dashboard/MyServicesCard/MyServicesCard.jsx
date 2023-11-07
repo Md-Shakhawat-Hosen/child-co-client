@@ -6,14 +6,12 @@ import { NavLink } from "react-router-dom";
 
 // import { AuthContext } from "../../Provider/AuthProvider";
 
-
 const MyServicesCard = ({
   addService,
   myAddedServices,
   setMyAddedServices,
 }) => {
   // const {user} = useContext(AuthContext);
-
 
   const {
     _id,
@@ -43,7 +41,9 @@ const MyServicesCard = ({
           .then((data) => {
             // console.log(data);
             if (data.deletedCount > 0) {
-              const remaining = myAddedServices.filter(oneService => oneService._id !== id);
+              const remaining = myAddedServices.filter(
+                (oneService) => oneService._id !== id
+              );
               setMyAddedServices(remaining);
 
               Swal.fire({

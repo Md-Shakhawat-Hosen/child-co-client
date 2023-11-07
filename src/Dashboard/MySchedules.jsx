@@ -5,7 +5,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 import MyPendingWorks from "./MyPendingWorks/MyPendingWorks";
 
 const MySchedules = () => {
-  
   const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
@@ -14,7 +13,7 @@ const MySchedules = () => {
       .then((data) => setMyBooking(data));
   }, [user?.email]);
 
-//   console.log(myBooking);
+  //   console.log(myBooking);
   return (
     <div className="px-4">
       <h1 className="text-center font-bold text-xl my-6 bg-cyan-300 p-6">
@@ -82,7 +81,7 @@ const MySchedules = () => {
       )}
 
       <div>
-        <MyPendingWorks ></MyPendingWorks>
+        <MyPendingWorks></MyPendingWorks>
       </div>
     </div>
   );
