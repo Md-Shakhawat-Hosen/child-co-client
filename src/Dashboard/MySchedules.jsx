@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import MyPendingWorks from "./MyPendingWorks/MyPendingWorks";
 
 const MySchedules = () => {
   const [myBooking, setMyBooking] = useState([]);
@@ -15,9 +16,11 @@ const MySchedules = () => {
 //   console.log(myBooking);
   return (
     <div className="px-4">
-      <h1 className="text-center font-bold text-xl my-6">My bookings</h1>
+      <h1 className="text-center font-bold text-xl my-6 bg-cyan-300 p-6">My bookings</h1>
       {myBooking?.length === 0 ? (
-        <p className="font-bold text-xl h-[40vh] justify-center flex items-center">There is no booking</p>
+        <p className="font-bold text-xl h-[40vh] justify-center flex items-center">
+          There is no booking
+        </p>
       ) : (
         <div>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -39,6 +42,9 @@ const MySchedules = () => {
                   <th scope="col" className="px-6 py-3">
                     provider Email
                   </th>
+                  <th scope="col" className="px-6 py-3">
+                    Status
+                  </th>
                 </tr>
               </thead>
               {myBooking?.map((book) => (
@@ -56,9 +62,14 @@ const MySchedules = () => {
                     <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                       {book?.price}$
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 ont-semibold text-gray-900 dark:text-white">
                       <h1 className="font-medium ">
                         {book.serviceProviderEmail}
+                      </h1>
+                    </td>
+                    <td className="px-6 py-4 ont-semibold text-gray-900 dark:text-white">
+                      <h1 className="font-medium ">
+                        {book?.status || 'pending'}
                       </h1>
                     </td>
                   </tr>
@@ -68,6 +79,10 @@ const MySchedules = () => {
           </div>
         </div>
       )}
+
+      <div>
+        <MyPendingWorks></MyPendingWorks>
+      </div>
     </div>
   );
 };
