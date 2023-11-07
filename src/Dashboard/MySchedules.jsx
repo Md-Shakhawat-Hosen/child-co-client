@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import MyPendingWorks from "./MyPendingWorks/MyPendingWorks";
 
 const MySchedules = () => {
+  
   const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
@@ -16,7 +17,9 @@ const MySchedules = () => {
 //   console.log(myBooking);
   return (
     <div className="px-4">
-      <h1 className="text-center font-bold text-xl my-6 bg-cyan-300 p-6">My bookings</h1>
+      <h1 className="text-center font-bold text-xl my-6 bg-cyan-300 p-6">
+        My bookings
+      </h1>
       {myBooking?.length === 0 ? (
         <p className="font-bold text-xl h-[40vh] justify-center flex items-center">
           There is no booking
@@ -68,9 +71,7 @@ const MySchedules = () => {
                       </h1>
                     </td>
                     <td className="px-6 py-4 ont-semibold text-gray-900 dark:text-white">
-                      <h1 className="font-medium ">
-                        {book?.status || 'pending'}
-                      </h1>
+                      <h1 className="font-medium ">{book?.status}</h1>
                     </td>
                   </tr>
                 </tbody>
@@ -81,7 +82,7 @@ const MySchedules = () => {
       )}
 
       <div>
-        <MyPendingWorks></MyPendingWorks>
+        <MyPendingWorks ></MyPendingWorks>
       </div>
     </div>
   );
