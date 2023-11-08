@@ -59,7 +59,11 @@ const MySchedules = () => {
                 <tbody key={book._id}>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-32 p-4">
-                      <img className="w-[70px] h-[70px] rounded-full" src={book.serviceImage} alt="Iphone 12" />
+                      <img
+                        className="w-[70px] h-[70px] rounded-full"
+                        src={book.serviceImage}
+                        alt="Iphone 12"
+                      />
                     </td>
                     <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                       {book.serviceName}
@@ -76,7 +80,11 @@ const MySchedules = () => {
                       </h1>
                     </td>
                     <td className="px-6 py-4 ont-semibold text-gray-900 dark:text-white">
-                      <h1 className="font-medium ">{book?.status}</h1>
+                      {book.status ? (
+                        <h1 className="font-medium ">{book?.status}</h1>
+                      ) : (
+                        <h1 className="font-medium ">{"pending"}</h1>
+                      )}
                     </td>
                   </tr>
                 </tbody>
