@@ -3,12 +3,13 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef } from "react";
+import OtherService from "./OtherService/OtherService";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const btn = useRef();
 
-  console.log(user);
+  // console.log(user);
 
   const serviceDetails = useLoaderData();
 
@@ -271,6 +272,15 @@ const ServiceDetails = () => {
               {/* <p className="px-2">{serviceProvider?.description || ''}</p> */}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="">
+       
+        <div>
+          <OtherService
+            serviceDetails={serviceDetails}
+          ></OtherService>
         </div>
       </div>
     </div>
