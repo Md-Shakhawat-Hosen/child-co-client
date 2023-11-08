@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef } from "react";
@@ -7,6 +7,8 @@ import OtherService from "./OtherService/OtherService";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const btn = useRef();
 
   // console.log(user);
@@ -44,7 +46,7 @@ const ServiceDetails = () => {
       price,
     };
 
-    console.log(userBooking);
+    // console.log(userBooking);
 
     fetch("https://child-co-server.vercel.app/booking", {
       method: "POST",
@@ -59,6 +61,8 @@ const ServiceDetails = () => {
         if (data.insertedId) {
           btn.current.click();
           toast.success("Booking successfully");
+          navigate("/my-schedules");
+
         }
       });
   };
