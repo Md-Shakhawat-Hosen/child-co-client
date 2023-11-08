@@ -69,7 +69,7 @@ const MyServicesCard = ({
             />
           </div>
           <div className="flex flex-1 flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-orange-400 dark:text-white">
               {serviceName}
             </h5>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -81,16 +81,16 @@ const MyServicesCard = ({
                 src={serviceProvider.image}
                 alt=""
               />
-              <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
                 {serviceProvider.name}
               </p>
             </div>
             <div className="flex flex-col lg:flex-row justify-between">
-              <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
                 Service Area: {serviceArea}
               </p>
-              <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Price: {servicePrice}$
+              <p className="text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
+                {servicePrice}$
               </p>
             </div>
 

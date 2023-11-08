@@ -15,11 +15,11 @@ const ServicesCard = ({service}) => {
           />
           <div className="p-5">
             <div className="flex justify-between">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-orange-400 dark:text-white ">
                 {serviceName}
               </h5>
 
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
                 {servicePrice}$
               </h5>
             </div>
@@ -34,7 +34,7 @@ const ServicesCard = ({service}) => {
                   src={serviceProvider.image}
                   alt=""
                 />
-                <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
                   {serviceProvider.name}
                 </p>
               </div>

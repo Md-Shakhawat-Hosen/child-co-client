@@ -8,7 +8,7 @@ const About = () => {
         <div>
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1">
-              <p>
+              <p className='text-justify'>
                 For Kids Co is a quality, affordable, before and after school
                 club and holiday playscheme for children. At For Kids Co, your
                 child will benefit from a caring, safe and supported environment
@@ -32,7 +32,7 @@ const About = () => {
             <div className="flex-1">
               <img src={img_2} alt="" />
             </div>
-            <div className='flex-1'>
+            <div className='flex-1 text-justify'>
               <p>
                 Healthy living is promoted and reflected in our menus and
                 activities. You will be provided with a schedule of activities

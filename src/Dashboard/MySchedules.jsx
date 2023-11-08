@@ -22,7 +22,7 @@ const MySchedules = () => {
   //   console.log(myBooking);
   return (
     <div className="px-4">
-      <h1 className="text-center font-bold text-xl my-6 bg-cyan-300 p-6">
+      <h1 className="text-center font-bold text-xl my-6 bg-orange-400 text-white p-6">
         My bookings
       </h1>
       {myBooking?.length === 0 ? (

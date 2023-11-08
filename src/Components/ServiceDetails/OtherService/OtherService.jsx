@@ -43,11 +43,11 @@ const OtherService = ({ serviceDetails }) => {
                     />
                     <div className="p-5">
                       <div className="flex justify-between">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-orange-400 dark:text-white">
                           {filterService.serviceName}
                         </h5>
 
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
                           {filterService.servicePrice}$
                         </h5>
                       </div>
@@ -62,7 +62,7 @@ const OtherService = ({ serviceDetails }) => {
                             src={filterService.serviceProvider.image}
                             alt=""
                           />
-                          <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                          <p className="text-2xl font-bold tracking-tight text-gray-700 dark:text-white">
                             {filterService.serviceProvider.name}
                           </p>
                         </div>

@@ -75,7 +75,7 @@ const MyPendingWorks = () => {
 
   return (
     <div className="my-6">
-      <h1 className="font-bold text-center text-xl bg-cyan-300 p-6">
+      <h1 className="font-bold text-center text-xl bg-orange-400 text-white p-6">
         My Pending Works
       </h1>
       <div>
