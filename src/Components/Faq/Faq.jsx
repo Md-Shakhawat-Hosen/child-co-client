@@ -5,7 +5,7 @@ const Faq = () => {
       <div className="mt-24 px-4">
         <h1 className="text-xl font-bold text-center my-12">FAQs</h1>
         <div className="collapse collapse-plus bg-base-200 mb-6">
-          <input type="radio" name="my-accordion-3" checked="checked" />
+          <input type="radio" name="my-accordion-3"  />
           <div className="collapse-title text-xl font-medium">
             What schools does For Kids Co. service?
           </div>
