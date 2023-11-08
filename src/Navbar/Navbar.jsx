@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import logo from '../../public/Images/childCobgremove2.png'
 
 
 const Navbar = () => {
@@ -73,7 +74,10 @@ const Navbar = () => {
                 )}
               </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">Child Co</a>
+            <div className="flex items-center justify-center">
+              <img className="w-[80px]" src={logo} alt="" />
+              <a className=" text-xl font-bold">Child<span className="text-orange-400">Co</span></a>
+            </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu z-10 menu-horizontal px-1">
@@ -108,7 +112,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src={user?.photoURL} />
+                    <img src={user?.photoURL} referrerPolicy="no-referrer" />
                   </div>
                 </label>
                 <ul

@@ -44,7 +44,7 @@ const UpdateService = () => {
 
     console.log(addService);
 
-    fetch(`http://localhost:5000/services/${_id}`, {
+    fetch(`https://child-co-server.vercel.app/services/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

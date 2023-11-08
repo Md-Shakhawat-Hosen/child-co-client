@@ -10,7 +10,7 @@ const MyPendingWorks = () => {
   const [myPendingWorks, setMyPendingWorks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/booking")
+    fetch("https://child-co-server.vercel.app/booking")
       .then((res) => res.json())
       .then((data) => setMyPendingWorks(data));
   }, []);
@@ -27,7 +27,7 @@ const MyPendingWorks = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/booking/${bookingId}`,
+        `https://child-co-server.vercel.app/booking/${bookingId}`,
         {
           method: "PATCH",
           headers: {

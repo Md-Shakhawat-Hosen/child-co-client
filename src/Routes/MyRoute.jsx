@@ -43,7 +43,7 @@ const myRoute = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://child-co-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/my-services",
@@ -57,7 +57,7 @@ const myRoute = createBrowserRouter([
         path: "/updateService/:id",
         element: <UpdateService></UpdateService>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://child-co-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/add-services",

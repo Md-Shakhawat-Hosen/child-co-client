@@ -34,7 +34,7 @@ const MyAddServices = () => {
 
     console.log(addService);
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://child-co-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

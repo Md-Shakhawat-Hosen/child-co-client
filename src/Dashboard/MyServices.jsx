@@ -11,7 +11,7 @@ const MyServices = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/services?email=${user.email}`)
+      fetch(`https://child-co-server.vercel.app/services?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setMyAddedServices(data));
     }

@@ -8,7 +8,7 @@ const MySchedules = () => {
   const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/booking?email=${user?.email}`)
+    fetch(`https://child-co-server.vercel.app/booking?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyBooking(data));
   }, [user?.email]);

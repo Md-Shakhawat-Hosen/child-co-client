@@ -45,7 +45,7 @@ const ServiceDetails = () => {
 
     console.log(userBooking);
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://child-co-server.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
