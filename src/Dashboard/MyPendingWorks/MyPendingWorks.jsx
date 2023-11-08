@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -9,10 +10,17 @@ const MyPendingWorks = () => {
 
   const [myPendingWorks, setMyPendingWorks] = useState([]);
 
+  const url = "https://child-co-server.vercel.app/booking";
+
   useEffect(() => {
-    fetch("https://child-co-server.vercel.app/booking")
-      .then((res) => res.json())
-      .then((data) => setMyPendingWorks(data));
+    // fetch("https://child-co-server.vercel.app/booking")
+    //   .then((res) => res.json())
+    //   .then((data) => setMyPendingWorks(data));
+
+    axios.get(url,{withCredentials:true})
+    .then(res =>{
+      setMyPendingWorks(res.data)
+    })
   }, []);
 
   // console.log(myPendingWorks)

@@ -69,7 +69,11 @@ const myRoute = createBrowserRouter([
       },
       {
         path: "/my-schedules",
-        element: <MySchedules></MySchedules>,
+        element: (
+          <PrivateRoute>
+            <MySchedules></MySchedules>
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -7,11 +8,16 @@ import MyPendingWorks from "./MyPendingWorks/MyPendingWorks";
 const MySchedules = () => {
   const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
+  const url =`https://child-co-server.vercel.app/booking?email=${user?.email}`;
   useEffect(() => {
-    fetch(`https://child-co-server.vercel.app/booking?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setMyBooking(data));
-  }, [user?.email]);
+    // fetch(`https://child-co-server.vercel.app/booking?email=${user?.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setMyBooking(data));
+    axios.get(url, {withCredentials:true})
+    .then(res =>{
+      setMyBooking(res.data)
+    })
+  }, [url]);
 
   //   console.log(myBooking);
   return (

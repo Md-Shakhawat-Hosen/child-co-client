@@ -2,7 +2,7 @@ import logo from '../../../public/Images/childCobgremove2.png'
 
 const Footer = () => {
     return (
-      <div>
+      <div className='my-24'>
         <footer className="bg-white dark:bg-gray-900">
           <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div className="md:flex md:justify-between">
