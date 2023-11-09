@@ -7,6 +7,7 @@ import FilterServices from "./FilterServices";
 const AllServices = () => {
      const { services } = useServices();
     const [showServices, setShowAllServices] = useState([])
+    const [initialService, setInitialService] = useState(6)
       const [show, setShow] = useState(false);
 
     useEffect(()=>{
@@ -47,6 +48,7 @@ const AllServices = () => {
     const handleShowMore = () => {
         setShow(false)
         setShowAllServices(services)
+        setInitialService(services.length)
     }
     return (
       <div>
@@ -91,8 +93,8 @@ const AllServices = () => {
           </form>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          {showServices.map((filterservice) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {showServices.slice(0,initialService).map((filterservice) => (
             <FilterServices
               key={filterservice._id}
               filterservice={filterservice}
